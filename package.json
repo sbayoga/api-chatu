@@ -1,0 +1,35 @@
+{
+  "name": "api-chatu",
+  "version": "0.1.0",
+  "description": "Api for app ChatU",
+  "author": "Sebastián Bayo Gaspar",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start2": "node ./bin/www"
+  },
+  "devDependencies": {
+    "bcrypt": "latest",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.0",
+    "del": "2.2.0",
+    "express": "^4.14.0",
+    "express-session": "1.15.3",
+    "http": "0.0.0",
+    "jsonwebtoken": "latest",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.2",
+    "morgan": "^1.7.0",
+    "socket-io": "1.0.0",
+    "superlogin": "^0.6.1",
+    "webpack": "^3.3.0"
+  },
+  "dependencies": {
+    "@ionic-native/sim": "^4.0.1",
+    "express-session": "^1.15.3",
+    "socket.io": "^2.0.3"
+  }
+}
