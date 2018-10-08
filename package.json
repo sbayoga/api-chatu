@@ -11,7 +11,6 @@
     "start": "node server.js"
   },
   "devDependencies": {
-    "bcrypt": "latest",
     "body-parser": "latest",
     "cors": "latest",
     "del": "latest",

@@ -10,7 +10,6 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 var cors = require('cors');
 var session = require("express-session");
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
 var server = app.listen(8080);
 var io = require('socket.io').listen(server);
 var http = require('http');
@@ -193,13 +192,13 @@ app.post('/api/user/create', (req, res) => {
         if (err) res.status(400).send(err);
         else if (user) res.status(404).send(returnErrorMessage('El email ya existe en la base de datos'));
         else
-            bcrypt.hash(req.body.password, 10, (error, hash) => {
+           // bcrypt.hash(req.body.password, 10, (error, hash) => {
                 User.create({
                     userId: req.body.userId || -1,
                     username: req.body.username || null,
                     name: req.body.name,
                     lastName: req.body.lastName,
-                    password: hash,
+                    password: req.body.password,
                     email: req.body.email,
                     avatar: req.body.avatar || null,
                     status: 0
@@ -208,7 +207,7 @@ app.post('/api/user/create', (req, res) => {
                     else if (!response) res.status(404).send(returnErrorMessage('No se ha podido crear el usuario.'));
                     else res.json(returnSuccessJson(response))
                 });
-            });
+           // });
 
     });
 });
@@ -237,9 +236,9 @@ app.post('/api/user/logout', (req, res) => {
         if (err) res.status(400).send(err);
         else if (!user || user === undefined) res.status(404).send(returnErrorMessage('Usuario no encontrado.'))
         else
-            bcrypt.compare(req.body.password, user.password, (error, verification) => {
-                if (err) res.status(400).send(err);
-                if (verification)
+           // bcrypt.compare(req.body.password, user.password, (error, verification) => {
+                //if (err) res.status(400).send(err);
+              //  if (verification)
                     Token.create({
                         token: jwt.sign({ email: req.body.email, timestamp: Date.now(), user: user }, SECRET_KEY, { expiresIn: '1h' }),
                         expirationDate: Math.floor(Date.now() / 1000) + (60 * 60),
@@ -258,8 +257,8 @@ app.post('/api/user/logout', (req, res) => {
                             }));
                     })
 
-                else res.status(401).send(returnErrorMessage('Contraseña inválida.'))
-            });
+                //else res.status(401).send(returnErrorMessage('Contraseña inválida.'))
+            //});
     });
 });
 app.post('/api/user/login', (req, res) => {
@@ -269,9 +268,9 @@ app.post('/api/user/login', (req, res) => {
         if (err) res.status(400).send(err);
         else if (!user || user === undefined) res.status(404).send(returnErrorMessage('Usuario no encontrado.'))
         else
-            bcrypt.compare(req.body.password, user.password, (error, verification) => {
-                if (err) res.status(400).send(err);
-                if (verification)
+            //bcrypt.compare(req.body.password, user.password, (error, verification) => {
+              //  if (err) res.status(400).send(err);
+                //if (verification)
                     Token.create({
                         token: jwt.sign({ email: req.body.email, timestamp: Date.now(), user: user }, SECRET_KEY, { expiresIn: '1h' }),
                         expirationDate: Math.floor(Date.now() / 1000) + (60 * 60),
@@ -290,8 +289,8 @@ app.post('/api/user/login', (req, res) => {
                             }));
                     })
 
-                else res.status(401).send(returnErrorMessage('Contraseña inválida.'))
-            });
+               // else res.status(401).send(returnErrorMessage('Contraseña inválida.'))
+            //});
     });
 });
 
