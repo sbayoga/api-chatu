@@ -8,28 +8,27 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "start2": "node ./bin/www"
+    "start": "node server.js"
   },
   "devDependencies": {
     "bcrypt": "latest",
-    "body-parser": "^1.15.2",
-    "cors": "^2.8.0",
-    "del": "2.2.0",
-    "express": "^4.14.0",
-    "express-session": "1.15.3",
-    "http": "0.0.0",
+    "body-parser": "latest",
+    "cors": "latest",
+    "del": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "http": "latest",
     "jsonwebtoken": "latest",
-    "method-override": "^2.3.6",
-    "mongoose": "^4.6.2",
-    "morgan": "^1.7.0",
-    "socket-io": "1.0.0",
-    "superlogin": "^0.6.1",
-    "webpack": "^3.3.0"
+    "method-override": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "socket-io": "latest",
+    "superlogin": "latest",
+    "webpack": "latest"
   },
   "dependencies": {
-    "@ionic-native/sim": "^4.0.1",
-    "express-session": "^1.15.3",
-    "socket.io": "^2.0.3"
+    "@ionic-native/sim": "latest",
+    "express-session": "latest",
+    "socket.io": "latest"
   }
 }
